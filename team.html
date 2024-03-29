@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="teamApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+</head>
+<body style="background-color: var(--blue1); color: var(--blue5);" ng-controller="TeamController as teamCtrl">
+    <a href="home.html">
+        <img src="photos/pl-main-logo.png" alt="Back to Home" style="width: 50px; height: auto;">
+    </a>
+    <div class="team-grid">
+        <div class="team-card" ng-repeat="(teamName, team) in teamCtrl.teams track by teamName" ng-click="teamCtrl.showPlayers(teamName)">
+            <img ng-src="{{team.logo}}" alt="Team Logo">
+            <div class="team-name">{{::teamName}}</div>
+        </div>
+    </div>
+
+    <div id="playing11" ng-repeat="(teamName, team) in teamCtrl.teams track by teamName" ng-show="teamCtrl.selectedTeam === teamName">
+        <div class="team-details">
+            <h2>Playing 11 for {{teamName}}</h2>
+            <div class="player-grid">
+                <div class="player-card" ng-repeat="player in team.players">
+                    <img ng-src="{{player.image}}" alt="Player Logo">
+                    <div class="player-name">{{player.name}}</div>
+                    <div class="player-details">
+                        <div class="position-number">
+                            <span>{{player.number}}</span>
+                            <span>{{player.position}}</span>
+                        </div>
+                        <span>{{player.nationality}}</span>
+                    </div>                               
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <script>
+        var app = angular.module('teamApp', []);
+
+        app.controller('TeamController', function($scope, $anchorScroll, $timeout) {
+            var teamCtrl = this;
+            teamCtrl.teams = {
+                 "Manchester City": {
+                    logo: 'photos/Manchester City Logo.png',
+                    players: [
+                        { name: 'Ederson', image: 'photos/players/ederson.webp', position: 'Goalkeeper', number: 31, nationality: 'Brazil' },
+                        { name: 'John Stones', image: 'photos/players/John-Stones.webp', position: 'Defender', number: 5, nationality: 'England' },
+                        { name: 'John Stones', image: 'photos/players/John-Stones.webp', position: 'Defender', number: 5, nationality: 'England' },
+                        { name: 'Kyle Walker', image: 'photos/players/Kyle-Walker.webp', position: 'Defender', number: 2, nationality: 'England' },
+                        { name: 'Nathan Ake', image: 'photos/players/Nathan-Ake.webp', position: 'Defender', number: 6, nationality: 'Netherlands' },
+                        { name: 'Ruben Dias', image: 'photos/players/Ruben-Dias.webp', position: 'Defender', number: 3, nationality: 'Portugal' },
+                        { name: 'Jack Grealish', image: 'photos/players/Jack-Grealish.webp', position: 'Midfielder', number: 10, nationality: 'England' },
+                        { name: 'Rodri', image: 'photos/players/Rodri.webp', position: 'Midfielder', number: 16, nationality: 'Spain' },
+                        { name: 'Kevin de Bruyne', image: 'photos/players/Kevin De Bruyne.webp', position: 'Midfielder', number: 17, nationality: 'England' },
+                        { name: 'Bernardo Silva', image: 'photos/players/Bernardo Silva.webp', position: 'Midfielder', number: 20, nationality: 'Portugal' },
+                        { name: 'Erling Haaland', image: 'photos/players/Erling Haaland.webp', position: 'Forward', number: 9, nationality: 'England' },                                                
+                        { name: 'Julian Alvarez', image: 'photos/players/Julian Alvarez.webp', position: 'Forward', number: 19, nationality: 'Argentina' },
+                        { name: 'Jeremy Doku', image: 'photos/players/Jeremy Doku.webp', position: 'Forward', number: 11, nationality: 'Belgium' },
+                    ]
+                },
+                "Liverpool": {
+                    logo: 'photos/Liverpool Logo.png',
+                    players: [
+                        { name: 'Alisson Becker', image: 'photos/players/Alisson Becker.webp', position: 'Goalkeeper', number: 1, nationality: 'Brazil' },
+                        { name: 'Ibrahima Konate', image: 'photos/players/Ibrahima Konate.webp', position: 'Defender', number: 5, nationality: 'France' },
+                        { name: 'Joe Gomez', image: 'photos/players/Joe Gomez.webp', position: 'Defender', number: 2, nationality: 'England' },
+                        { name: 'Andy Robertson', image: 'photos/players/Andy Robertson.webp', position: 'Defender', number: 26, nationality: 'Scotland' },
+                        { name: 'Conor Bradley', image: 'photos/players/Conor Bradley.webp', position: 'Defender', number: 84, nationality: 'Northern Ireland' },
+                        { name: 'Harvey Elliot', image: 'photos/players/Harvey Elliot.webp', position: 'Midfielder', number: 19, nationality: 'England' },
+                        { name: 'Bobby Clark', image: 'photos/players/Bobby Clark.webp', position: 'Midfielder', number: 42, nationality: 'England' },
+                        { name: 'Wataru Endo', image: 'photos/players/Wataru Endo.webp', position: 'Midfielder', number: 3, nationality: 'Japan' },
+                        { name: 'Mohamed Salah', image: 'photos/players/Mohammed Salah.webp', position: 'Forward', number: 11, nationality: 'Egypt' },
+                        { name: 'Diogo Jota', image: 'photos/players/Diogo Jota.webp', position: 'Forward', number: 20, nationality: 'Portugal' },                                                
+                        { name: 'Luis Diaz', image: 'photos/players/Luis Diaz.webp', position: 'Forward', number: 7, nationality: 'Colombia' },
+                        { name: 'Darwin Nunez', image: 'photos/players/Darwin Nunez.webp', position: 'Forward', number: 9, nationality: 'Uruguay' },
+                    ]
+                },
+                "Arsenal":{
+                    logo: 'photos/Arsenal Logo.png', 
+                    players: [
+                        { name: 'Ederson', image: 'photos/players/ederson.webp', position: 'Goalkeeper', number: 31, nationality: 'Brazil' },
+                        { name: 'John Stones', image: 'photos/players/John-Stones.webp', position: 'Defender', number: 5, nationality: 'England' },
+                        { name: 'Kyle Walker', image: 'photos/players/Kyle-Walker.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                },
+                "Aston Villa":{
+                    logo: 'photos/Aston Villa Logo.png', 
+                    players: [
+                        { name: 'Alisson Becker', image: 'photos/players/Alisson Becker.webp', position: 'Goalkeeper', number: 1, nationality: 'Brazil' },
+                        { name: 'Ibrahima Konate', image: 'photos/players/Ibrahima Konate.webp', position: 'Defender', number:   5, nationality: 'France' },
+                        { name: 'Joe Gomez', image: 'photos/players/Joe Gomez.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                },
+                "Blackburn Rovers":{
+                    logo: 'photos/Blackburn Rovers Logo.png', 
+                    players: [
+                        { name: 'Ederson', image: 'photos/players/ederson.webp', position: 'Goalkeeper', number: 31, nationality: 'Brazil' },
+                        { name: 'John Stones', image: 'photos/players/John-Stones.webp', position: 'Defender', number: 5, nationality: 'England' },
+                        { name: 'Kyle Walker', image: 'photos/players/Kyle-Walker.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                },
+                "Bournemouth F.C":{
+                    logo: 'photos/Bournemouth F.C Logo.png', 
+                    players: [
+                        { name: 'Alisson Becker', image: 'photos/players/Alisson Becker.webp', position: 'Goalkeeper', number: 1, nationality: 'Brazil' },
+                        { name: 'Ibrahima Konate', image: 'photos/players/Ibrahima Konate.webp', position: 'Defender', number:   5, nationality: 'France' },
+                        { name: 'Joe Gomez', image: 'photos/players/Joe Gomez.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                },
+                "Brentford":{
+                    logo: 'photos/Brentford Logo.png', 
+                    players: [
+                        { name: 'Ederson', image: 'photos/players/ederson.webp', position: 'Goalkeeper', number: 31, nationality: 'Brazil' },
+                        { name: 'John Stones', image: 'photos/players/John-Stones.webp', position: 'Defender', number: 5, nationality: 'England' },
+                        { name: 'Kyle Walker', image: 'photos/players/Kyle-Walker.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                },
+                "Brighton & Hove Albion":{
+                    logo: 'photos/Brighton & Hove Albion Logo.png', 
+                    players: [
+                        { name: 'Alisson Becker', image: 'photos/players/Alisson Becker.webp', position: 'Goalkeeper', number: 1, nationality: 'Brazil' },
+                        { name: 'Ibrahima Konate', image: 'photos/players/Ibrahima Konate.webp', position: 'Defender', number:   5, nationality: 'France' },
+                        { name: 'Joe Gomez', image: 'photos/players/Joe Gomez.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                }, 
+                "Burnley":{
+                    logo: 'photos/Burnley Logo.png', 
+                    players: [
+                        { name: 'Ederson', image: 'photos/players/ederson.webp', position: 'Goalkeeper', number: 31, nationality: 'Brazil' },
+                        { name: 'John Stones', image: 'photos/players/John-Stones.webp', position: 'Defender', number: 5, nationality: 'England' },
+                        { name: 'Kyle Walker', image: 'photos/players/Kyle-Walker.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                },
+                "Chelsea":{
+                    logo: 'photos/Chelsea Logo.png', 
+                    players: [
+                        { name: 'Alisson Becker', image: 'photos/players/Alisson Becker.webp', position: 'Goalkeeper', number: 1, nationality: 'Brazil' },
+                        { name: 'Ibrahima Konate', image: 'photos/players/Ibrahima Konate.webp', position: 'Defender', number:   5, nationality: 'France' },
+                        { name: 'Joe Gomez', image: 'photos/players/Joe Gomez.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                }, 
+                'Crystal Palace':{
+                    logo: 'photos/Everton Logo.png', 
+                    players: [
+                        { name: 'Alisson Becker', image: 'photos/players/Alisson Becker.webp', position: 'Goalkeeper', number: 1, nationality: 'Brazil' },
+                        { name: 'Ibrahima Konate', image: 'photos/players/Ibrahima Konate.webp', position: 'Defender', number:   5, nationality: 'France' },
+                        { name: 'Joe Gomez', image: 'photos/players/Joe Gomez.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                },
+                'Fulham':{
+                    logo: 'photos/Fulham Logo.png', 
+                    players: [
+                        { name: 'Ederson', image: 'photos/players/ederson.webp', position: 'Goalkeeper', number: 31, nationality: 'Brazil' },
+                        { name: 'John Stones', image: 'photos/players/John-Stones.webp', position: 'Defender', number: 5, nationality: 'England' },
+                        { name: 'Kyle Walker', image: 'photos/players/Kyle-Walker.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                },
+                'Leeds United':{
+                    logo: 'photos/Leeds United Logo.png', 
+                    players: [
+                        { name: 'Alisson Becker', image: 'photos/players/Alisson Becker.webp', position: 'Goalkeeper', number: 1, nationality: 'Brazil' },
+                        { name: 'Ibrahima Konate', image: 'photos/players/Ibrahima Konate.webp', position: 'Defender', number:   5, nationality: 'France' },
+                        { name: 'Joe Gomez', image: 'photos/players/Joe Gomez.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ]
+                },
+                'Leicester City':{
+                    logo: 'photos/Leicester City Logo.png', 
+                    players: [
+                        { name: 'Ederson', image: 'photos/players/ederson.webp', position: 'Goalkeeper', number: 31, nationality: 'Brazil' },
+                        { name: 'John Stones', image: 'photos/players/John-Stones.webp', position: 'Defender', number: 5, nationality: 'England' },
+                        { name: 'Kyle Walker', image: 'photos/players/Kyle-Walker.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                },
+                'Manchester United':{
+                    logo: 'photos/Manchester United Logo.png', 
+                    players: [
+                        { name: 'Alisson Becker', image: 'photos/players/Alisson Becker.webp', position: 'Goalkeeper', number: 1, nationality: 'Brazil' },
+                        { name: 'Ibrahima Konate', image: 'photos/players/Ibrahima Konate.webp', position: 'Defender', number:   5, nationality: 'France' },
+                        { name: 'Joe Gomez', image: 'photos/players/Joe Gomez.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ]
+                },
+                'Newcastle United':{
+                    logo: 'photos/Newcastle United Logo.png', 
+                    players: [
+                        { name: 'Ederson', image: 'photos/players/ederson.webp', position: 'Goalkeeper', number: 31, nationality: 'Brazil' },
+                        { name: 'John Stones', image: 'photos/players/John-Stones.webp', position: 'Defender', number: 5, nationality: 'England' },
+                        { name: 'Kyle Walker', image: 'photos/players/Kyle-Walker.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ] 
+                },
+                'Sheffield United':{
+                    logo: 'photos/Sheffield United Logo.png', 
+                    players: [
+                        { name: 'Alisson Becker', image: 'photos/players/Alisson Becker.webp', position: 'Goalkeeper', number: 1, nationality: 'Brazil' },
+                        { name: 'Ibrahima Konate', image: 'photos/players/Ibrahima Konate.webp', position: 'Defender', number:   5, nationality: 'France' },
+                        { name: 'Joe Gomez', image: 'photos/players/Joe Gomez.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ]
+                },
+                'Tottenham Hotspur':{
+                    logo: 'photos/Tottenham Hotspur Logo.png', 
+                    players: [
+                        { name: 'Ederson', image: 'photos/players/ederson.webp', position: 'Goalkeeper', number: 31, nationality: 'Brazil' },
+                        { name: 'John Stones', image: 'photos/players/John-Stones.webp', position: 'Defender', number: 5, nationality: 'England' },
+                        { name: 'Kyle Walker', image: 'photos/players/Kyle-Walker.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ]
+                },
+                'West Ham United':{
+                    logo: 'photos/West Ham United Logo.png', 
+                    players: [
+                        { name: 'Alisson Becker', image: 'photos/players/Alisson Becker.webp', position: 'Goalkeeper', number: 1, nationality: 'Brazil' },
+                        { name: 'Ibrahima Konate', image: 'photos/players/Ibrahima Konate.webp', position: 'Defender', number:   5, nationality: 'France' },
+                        { name: 'Joe Gomez', image: 'photos/players/Joe Gomez.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ]
+                },
+                'Wolverhampton Wanderers':{
+                    logo: 'photos/Wolverhampton Wanderers Logo.png', 
+                    players: [
+                        { name: 'Ederson', image: 'photos/players/ederson.webp', position: 'Goalkeeper', number: 31, nationality: 'Brazil' },
+                        { name: 'John Stones', image: 'photos/players/John-Stones.webp', position: 'Defender', number: 5, nationality: 'England' },
+                        { name: 'Kyle Walker', image: 'photos/players/Kyle-Walker.webp', position: 'Defender', number: 2, nationality: 'England' },
+                    ]
+                }
+            };
+            teamCtrl.selectedTeam = null;
+            teamCtrl.showPlayers = function(teamName) {
+                teamCtrl.selectedTeam = teamName;
+                $timeout(function() {
+                    $anchorScroll('playing11');
+                    $scope.$apply(); 
+                });
+            };
+
+        });
+    </script>
+</body>
+</html>
