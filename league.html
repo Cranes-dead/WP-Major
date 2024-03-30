@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/afe1be7c4e.js" crossorigin="anonymous"></script>
+    <script src="angular.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+
+body{
+    background-color: var(--blue1);
+}
+
+.news_header{
+    margin-top: 10px;
+    background-color: var(--blue5);
+
+}
+h1{
+    margin-left:100px;
+    font-size: 100px;
+    color: var(--blue4);
+    margin-bottom:0px;
+}
+.news{
+    display: flex;
+    flex-grow: 1;
+    margin: 10px;
+    flex-wrap: nowrap;
+}
+.main_news{
+    color: var(--blue4);
+    margin-right: 150px;
+}
+
+.salah{
+    margin-left: 30px;
+    margin-top: 10px;
+
+    width: 500%;
+    border-radius: 20px;
+    /* height: 50%; */
+    transition: transform 0.3s ease-in-out,opacity 0.3s;
+}
+.salah:hover{
+    transform: scale(1.03); 
+    opacity: 0.9 ;
+    cursor: pointer;
+}
+.salah_caption{
+    margin-left: 50px;
+    margin-right: -300px;
+    
+}
+.side_news{
+    display: flex;
+    color: var(--blue4);
+    margin-left: 290px;
+    flex-wrap: wrap;
+    
+}
+.speed{
+    margin-top: 10px;
+    width: 40%;
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out,opacity 0.3s;
+}
+.speed:hover{
+    transform: scale(1.03); 
+    opacity: 0.9 ;
+    cursor:pointer;
+}
+.side_news2{
+    display: flex;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <a href="new.html"><img class="logo" src="photos/pl-main-logo.png" alt="Logo"></a>
+        <nav class="nav">
+            <span class="nav-item"><a href="new.html">Home</a></span>
+            <span class="nav-item"><a href="team.html">Team</a></span>
+            <span class="nav-item"><a href="stats.html">Stats</a></span>
+            <span class="nav-item"><a href="league.html">News</a></span>
+        </nav>
+        <div class="media">
+            <a href="https://twitter.com/premierleague"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.instagram.com/premierleague/"><i class="fa-brands fa-instagram"></i></a></i>
+        </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="news_header">
+        <h1>NEWS </h1>
+    </div>
+   
+    <div class="news">
+        <div class="main_news">
+            <figure>
+                <img class="salah" src="photos/salah.jpg" alt="">
+                <figcaption class="salah_caption"><marquee behavior="" direction=""><strong>Salah scores yet again</strong></marquee></figcaption>
+            </figure>
+        </div>
+        <div class="side_news">
+            <figure>
+                <img class ="speed" src="photos/speed.jpeg" alt="">
+                <figcaption class="speed_caption"><strong>Speed finally makes his Debut</strong></figcaption>
+            </figure>
+            <figure>
+                <img class ="speed" src="photos/spurs.png" alt="">
+                <figcaption class="speed_caption"><strong>Spurs have won their Tenth UCL</strong></figcaption>
+            </figure>
+        </div>
+    </div>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <strong>PREMIER<img src="photos/pl-main-logo.png" id="footer-logo" alt="Logo">LEAGUE</strong>
+        </div>
+    </footer>
+</body>
+</html>

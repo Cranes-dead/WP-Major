@@ -14,11 +14,15 @@
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Poppins' , sans-serif;
+    scroll-behavior: smooth;
 }
 
 body{
-    background-color: var(--blue1);
+    background-color: var(--blue5);
     color: var(--blue5);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
 }
 a{
     color: var(--blue5) !important;
@@ -36,6 +40,10 @@ a:active{
 .header {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    background-color: var(--blue2);
+    padding: 10px;
+    
 }
 
 .logo {
@@ -54,11 +62,18 @@ a:active{
     transition: 0.45s;
     margin-left: 10px;
     margin-top:10px;
+    margin-right: 10px;
 }
-
+.media{
+    position: absolute;
+    top: px;
+    right: 50px;
+    font-size: 50px;
+}
 .nav:hover{
-    flex-grow: 0.9;
+    flex-grow: 0.80;
     transform: scale(1.02);
+    
 }
 .nav-item {
     font-weight: bold;
@@ -70,13 +85,14 @@ footer{
     display: block;
     margin-top: 20px;
     text-align: center;
+    width: 100%;
    
 }
 
 .footer{
     margin-top: 10px;
-    background-color:var(--blue5) ;
-    color: var(--blue2);
+    background-color:var(--blue2) ;
+    color: var(--blue5);
     padding: 10px;
     font-size: 50px;
 }
@@ -96,7 +112,8 @@ footer{
     display: flex;
     margin-left: 10px;
     flex-wrap: nowrap;
-    min-width: 1000px;
+    min-width: 1000px; 
+    margin-top:20px;
 }
 
 .points-table{
@@ -144,100 +161,5 @@ footer{
     cursor: pointer;
 }
 
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.team-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid var(--blue5);
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.team-card img {
-    width: 100px;
-    height: auto;
-}
-
-.player-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.player-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid var(--blue5); 
-    padding: 15px; 
-    border-radius: 10px;
-    width: 100%; 
-    box-sizing: border-box;
-    text-align: center;
-    min-height: 180px;
-}
-
-.position-number {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 10px; 
-}
-
-.player-card img {
-    width: 50px;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.player-name {
-    font-size: 1em;
-    margin-bottom: 10px;
-    text-align: center;
-    width: 100%;
-    word-wrap: break-word; 
-}
-
-.player-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 0.8em; 
-    color: var(--blue5);
-    margin-top: 10px;
-    width: 100%;
-}
-
-.player-details span {
-    margin-bottom: 5px;
-    text-align: center;
-}
 
 
-.player-details span:before {
-    content: attr(data-label);
-    font-weight: bold;
-    margin-right: 5px;
-}
-
-.player-details span[data-label="Position"] {
-    color: var(--blue4);
-}
-
-.player-details span[data-label="Number"] {
-    color: var(--blue4);
-}
-
-.player-details span[data-label="Nationality"] {
-    color: var(--blue4);
-}

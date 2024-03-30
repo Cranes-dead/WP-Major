@@ -3,14 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/afe1be7c4e.js" crossorigin="anonymous"></script>
     <title>Team Page</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <script src="angular.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root{
+            --blue0:#F0F3FA;
+            --blue1:#D5DEEF;
+            --blue2:#B1C9EF;
+            --blue3:#8AAEE0;
+            --blue4:#638ECB;
+            --blue5:#395886;
+        }
+
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Poppins' , sans-serif;
+        }
+
+        body{
+            background-color: var(--blue1);
+            color: var(--blue5);
+        }
+        a{
+            color: var(--blue5) !important;
+        }
+
+        a:link{
+            text-decoration: none;
+        }
+        a:hover{
+            color: var(--blue4) !important;
+        }
+        a:active{
+            color: var(--blue3) !important;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            margin-right: 20px;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        .nav {
+            display: flex;
+            background-color: var(--blue2);
+            padding: 20px;
+            border: 2px solid var(--blue5);
+            border-radius: 30px;
+            transition: 0.45s;
+            margin-left: 10px;
+            margin-top:10px;
+        }
+
+        .nav:hover{
+            flex-grow: 0.9;
+            transform: scale(1.02);
+        }
+        .nav-item {
+            font-weight: bold;
+            color: var(--blue5);
+            margin-left: 10px;
+        }
+
+        footer{
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .footer{
+            margin-top: 10px;
+            background-color:var(--blue5) ;
+            color: var(--blue2);
+            padding: 10px;
+            font-size: 50px;
+        }
+        .footer-content {
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+        }
+
+        #footer-logo {
+            width: 30px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+        .table1 {
+            display: flex;
+            margin-left: 10px;
+            flex-wrap: nowrap;
+            min-width: 1000px;
+        }
+
+        .points-table{
+            color: var(--blue5);
+            text-align: left;
+            border: solid var(--blue5);
+            border-bottom: var(--blue5) solid;
+            margin-right: 40px;
+        }
+
+        .points-table th,
+        .points-table td {
+            text-align: left; 
+            padding: 8px; 
+            border-bottom:var(--blue2,0.2) solid;
+        }
+
+        .points-table tbody tr:nth-child(4) {
+            border-bottom: 3px solid black; 
+        } 
+        .points-table .position-column {
+            text-align: center;
+        }
+        .points-table tbody tr td:first-child {
+            text-align: center;
+        }
+        .points-table thead th:nth-child(2),
+        .points-table tbody tr td:nth-child(2) {
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .club-icon{
+            width: 30px;
+        }
+
+        #fixtures{
+            background-color: var(--blue4);
+            color: var(--blue2);
+            padding: 20px;
+        }
+        .team-name{
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .team-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid var(--blue5);
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .team-card img {
+            width: 100px;
+            height: auto;
+        }
+
+        .player-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .player-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid var(--blue5); 
+            padding: 15px; 
+            border-radius: 10px;
+            width: 100%; 
+            box-sizing: border-box;
+            text-align: center;
+            min-height: 180px;
+        }
+
+        .position-number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 10px; 
+        }
+
+        .player-card img {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .player-name {
+            font-size: 1em;
+            margin-bottom: 10px;
+            text-align: center;
+            width: 100%;
+            word-wrap: break-word; 
+        }
+
+        .player-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8em; 
+            color: var(--blue5);
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .player-details span {
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .player-details span:before {
+            content: attr(data-label);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .player-details span[data-label="Position"] {
+            color: var(--blue4);
+        }
+
+        .player-details span[data-label="Number"] {
+            color: var(--blue4);
+        }
+
+        .player-details span[data-label="Nationality"] {
+            color: var(--blue4);
+        }
+    </style>
 </head>
 <body style="background-color: var(--blue1); color: var(--blue5);" ng-controller="TeamController as teamCtrl">
-    <a href="home.html">
-        <img src="photos/pl-main-logo.png" alt="Back to Home" style="width: 50px; height: auto;">
-    </a>
+    <header id="home" class="header">
+        <a href="home.html"><img class="logo" src="pl-main-logo.png" alt="Premier League Logo"></a>
+        <nav class="nav">
+            <a href="#home" class="nav-item">Home</a>
+            <a href="team.html" class="nav-item">Team</a>
+            <a href="league.html" class="nav-item">News</a>
+        </nav>
+        <div class="media">
+            <a href="https://twitter.com/premierleague"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.instagram.com/premierleague/"><i class="fa-brands fa-instagram"></i></a></i>
+        </div>
+    </header>
     <div class="team-grid">
         <div class="team-card" ng-repeat="(teamName, team) in teamCtrl.teams track by teamName" ng-click="teamCtrl.showPlayers(teamName)">
             <img ng-src="{{team.logo}}" alt="Team Logo">
@@ -34,9 +287,7 @@
                     </div>                               
                 </div>
             </div>
-        </div>
-    </div>    
-
+        </div>    
     <script>
         var app = angular.module('teamApp', []);
 

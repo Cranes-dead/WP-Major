@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier League Fan Site</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        :root {
+            --blue0: #F0F3FA;
+            --blue1: #D5DEEF;
+            --blue2: #B1C9EF;
+            --blue3: #8AAEE0;
+            --blue4: #638ECB;
+            --blue5: #395886;
+            --blue6: #007BFF;
+            /* New color for links and hover effects */
+        }
+
+        body {
+            background-color: var(--blue1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--blue5);
+            margin: 0;
+            padding: 0;
+        }
+
+        .stat-show {
+            display: flex;
+        }
+
+        a {
+            color: var(--blue6);
+            /* Updated color */
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--blue4);
+        }
+
+        .fixture:hover {
+            transform: translateY(-10px);
+        }
+
+       
+        .fixture-list,
+        .stats-container {
+            padding: 20px;
+            background-color: var(--blue0);
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        
+
+        .footer {
+            background-color: var(--blue5);
+            color: var(--blue2);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        #footer-logo {
+            width: 30px;
+        }
+
+        .stats-container {
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: var(--blue3);
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+        }
+
+        .stat {
+            background-color: var(--blue0);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: calc(25% - 20px);
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat .image {
+            height: 80%;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .stat .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .stat .data {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .stat .data span {
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat .data h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .fixture-list {
+            margin-top: 5px;
+            padding: 10px 20px;
+            justify-content: flex-start;
+            
+        }
+
+        .fixture-show {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .fixture {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 0 10px 10px 0;
+            width: calc(18.5% - 20px);
+            text-align: center;
+        }
+
+        .fixture-time,
+        .fixture-teams {
+            margin-bottom: 5px;
+        }
+
+        .fixture-teams {
+            font-weight: bold;
+        }
+
+        .fixture-channel,
+        .fixture-link {
+            font-size: 0.8em;
+            color: #aaa;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .news-section{
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .news-item {
+            background-color: var(--blue0);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            flex-wrap:wrap ;
+            
+        }
+        .news-item img{
+            border-radius: 20px;
+        }
+
+        .news2{
+            margin-left: 30px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .news2 img{
+            border-radius: 20px;
+
+        }
+        .mbappe{
+            width: 565px;
+        }
+        .salahnews{
+            width: 100%;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header id="home" class="header">
+        <a href="new.html"><img class="logo" src="photos/pl-main-logo.png" alt="Premier League Logo"></a>
+        <nav class="nav">
+            <a href="#home" class="nav-item">Home</a>
+            <a href="#table" class="nav-item">Table</a>
+            <a href="team.html" class="nav-item">Team</a>
+            <a href="#stats" class="nav-item">Stats</a>
+            <a href="league.html" class="nav-item">News</a>
+        </nav>
+        <div class="media">
+            <a href="https://twitter.com/premierleague"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.instagram.com/premierleague/"><i class="fa-brands fa-instagram"></i></a></i>
+        </div>
+    </header>
+    <main>
+        <section class="fixture-list">
+            <h2>Latest News</h2><br>
+            <div class="news-section">
+                    <div class="news-item">
+                        <div ><a href="https://www.premierleague.com/matchweek/12298/blog">
+                            <img class="salahnews" src="photos/salah.jpg">
+                             <a href="league.html"><h3> LIVE: Salah is gunning for the Top Spot</h3></a>    
+                        </a>
+                        </div>
+                        <div>
+                            <p>
+                                “Mo Salah! Mo Salah! Mo Salah! Running down the wing. Mo Salah la-la-la la-ahh, The Egyptian King!”
+
+Anfield never fails to echo these same words for their Egyptian King and prime goalscorer, Mohamed Salah, every single matchday.
+
+Well, it would only be fair to do so. Already the club’s all-time leading scorer in the PL and four all-time scorer who led them to both their inaugural Premier League trophy and yet another Champions League,  Mohamed Salah entered Liverpool’s history books once again after scoring in the first half against Sparta Prague in the UEFA Europa League round of 16 second-leg tie at Anfield.
+
+Salah scored his side’s third goal in the 10th minute. The Reds finished off Sparta Praha and have qualified for the quarters, winning the tie 11-2 on aggregate.
+
+With his goal in the Europa League, Salah has now become the first and only Liverpool player to score 20+ goals across all competitions for the club for seven seasons straight.
+                            </p>
+                        </div>
+                    </div><br>
+                    <div class="news2">
+                        <div><a href="https://www.premierleague.com/matchweek/12298/blog">
+                            <img src="photos/news.png">
+                            <h3>LIVE: Latest on Saka, Paqueta and Hwang; Walker ruled out</h3>
+                        </a></div>
+                        <div><a href="https://www.premierleague.com/matchweek/12298/blog">
+                            <img class ="mbappe"src="photos/mbappe.jpeg">
+                            <h3>LIVE: Mbappe has decided to join Manchester United in the Summer</h3></a>
+                        </div>
+                    </div>
+            </div>
+           
+        </section>
+        <section class="fixture-list">
+            <div>
+                <h2>Upcoming Fixtures</h2><br>
+            </div>
+            <div class="fixture-show">
+                <div class="fixture">
+                    <div class="fixture-time">Sunday 31 March</div>
+                    <div class="fixture-teams">CRY 15:00 LEI</div>
+                    <div class="fixture-channel">BT Sport 2</div>
+                    <div class="fixture-link">_</div>
+                </div>
+                <!-- Example of a new fixture -->
+                <div class="fixture">
+                    <div class="fixture-time">Monday 1 April</div>
+                    <div class="fixture-teams">LIV 18:00 MCI</div>
+                    <div class="fixture-channel">Sky Sports</div>
+                    <div class="fixture-link">_</div>
+                </div>
+                <div class="fixture">
+                    <div class="fixture-time">Saturday 30 March</div>
+                    <div class="fixture-teams">AV 18:00 WHM</div>
+                    <div class="fixture-channel">Sky Sports</div>
+                    <div class="fixture-link">_</div>
+                </div>
+                <div class="fixture">
+                    <div class="fixture-time">Monday 1 April</div>
+                    <div class="fixture-teams">ARS 18:00 NCU</div>
+                    <div class="fixture-channel">Sky Sports</div>
+                    <div class="fixture-link">_</div>
+                </div>
+                <div class="fixture">
+                    <div class="fixture-time">Monday 1 April</div>
+                    <div class="fixture-teams">MNU18:00 SHE</div>
+                    <div class="fixture-channel">Sky Sports</div>
+                    <div class="fixture-link">_</div>
+                </div>
+            </div>
+        </section>
+        <section  id="table" class="fixture-list">
+            <div class="table1">
+                <div>
+                    <h1>Points Table</h1>
+                    <table class="points-table">
+                        <thead>
+                            <tr>
+                                <th class="position-column">Position</th>
+                                <th>Club</th>
+                                <th>Pl</th>
+                                <th>W</th>
+                                <th>D</th>
+                                <th>L</th>
+                                <th>Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Liverpool Logo.png" alt="">Liverpool</td>
+                                <td>28</td>
+                                <td>20</td>
+                                <td>5</td>
+                                <td>3</td>
+                                <td>65</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Manchester City Logo.png" alt="">Manchester City</td>
+                                <td>27</td>
+                                <td>20</td>
+                                <td>2</td>
+                                <td>5</td>
+                                <td>62</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Manchester United Logo.png" alt=""> Manchester United</td>
+                                <td>27</td>
+                                <td>17</td>
+                                <td>7</td>
+                                <td>3</td>
+                                <td>58</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Leicester City Logo.png" alt="">Leicester City</td>
+                                <td>28</td>
+                                <td>17</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>56</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Chelsea Logo.png" alt="">Chelsea</td>
+                                <td>28</td>
+                                <td>15</td>
+                                <td>9</td>
+                                <td>4</td>
+                                <td>54</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td class="team-name"><img class="club-icon"src="photos/West Ham United Logo.png" alt="">West Ham United</td>
+                                <td>28</td>
+                                <td>14</td>
+                                <td>6</td>
+                                <td>8</td>
+                                <td>48</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Tottenham Hotspur Logo.png" alt="">Tottenham Hotspur</td>
+                                <td>27</td>
+                                <td>14</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>48</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Everton Logo.png" alt="">Everton</td>
+                                <td>26</td>
+                                <td>14</td>
+                                <td>4</td>
+                                <td>8</td>
+                                <td>46</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Arsenal Logo.png" alt="">Arsenal</td>
+                                <td>27</td>
+                                <td>12</td>
+                                <td>6</td>
+                                <td>9</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Aston Villa Logo.png" alt="">Aston Villa</td>
+                                <td>26</td>
+                                <td>12</td>
+                                <td>3</td>
+                                <td>11</td>
+                                <td>39</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Leeds United Logo.png" alt="">Leeds United</td>
+                                <td>28</td>
+                                <td>11</td>
+                                <td>3</td>
+                                <td>14</td>
+                                <td>36</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Wolverhampton Wanderers Logo.png" alt="">Wolverhampton Wanderers</td>
+                                <td>28</td>
+                                <td>9</td>
+                                <td>7</td>
+                                <td>12</td>
+                                <td>34</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Newcastle United Logo.png" alt="">Newcastle United</td>
+                                <td>27</td>
+                                <td>7</td>
+                                <td>7</td>
+                                <td>13</td>
+                                <td>28</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Crystal Palace Logo.png" alt="">Crystal Palace</td>
+                                <td>28</td>
+                                <td>8</td>
+                                <td>5</td>
+                                <td>15</td>
+                                <td>29</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Brighton & Hove Albion Logo.png" alt="">Brighton &amp; Hove Albion</td>
+                                <td>27</td>
+                                <td>5</td>
+                                <td>11</td>
+                                <td>11</td>
+                                <td>26</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Burnley Logo.png" alt="">Burnley</td>
+                                <td>26</td>
+                                <td>7</td>
+                                <td>6</td>
+                                <td>13</td>
+                                <td>27</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Fulham Logo.png" alt="">Fulham</td>
+                                <td>28</td>
+                                <td>4</td>
+                                <td>11</td>
+                                <td>13</td>
+                                <td>23</td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td class="team-name"><img class="club-icon"src="photos/Blackburn Rovers Logo.png" alt="">Blackburn Rovers</td>
+                                <td>28</td>
+                                <td>3</td>
+                                <td>8</td>
+                                <td>17</td>
+                                <td>17</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div><h1>Fixtures</h1>
+                    <div id="fixtures">
+                        <strong><h1>Select A Team</h1></strong>
+                    </div>
+                </div>
+                </div>
+        </section>
+        <section class="stats-container" id="stats">
+            <h2 class="left">2023/24 Top Stats</h2><br>
+            <div class="stat-show">
+                <div class="stat">
+                    <a href="goals.html">
+                        <div class="image">
+                            <img src="photos/haaland.jpeg" alt="Haaland">
+                        </div>
+                        <div class="data">
+                            <span>GOALS</span>
+                            <h2>18</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="stat">
+                    <a href="Assist.html">
+                        <div class="image">
+                            <img src="photos/de brune.jpg" alt="De Brune">
+                        </div>
+                        <div class="data">
+                            <span>ASSIST</span>
+                            <h2>10</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="stat">
+                    <a href="goals_team.html">
+                        <div class="image">
+                            <img src="photos/Arsenal Logo.png" alt="Arsenal">
+                        </div>
+                        <div class="data">
+                            <span>GOALS</span>
+                            <h2>70</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="stat">
+                    <h2></h2>
+                    <a href="Clean sheet.html">
+                        <div class="image">
+                            <img src="photos/Arsenal Logo.png" alt="Arsenal">
+                        </div>
+                        <div class="data">
+                            <span>CLEAN SHEETS</span>
+                            <h2>11</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <strong>PREMIER LEAGUE</strong>
+            <img src="photos/pl-main-logo.png" id="footer-logo" alt="Premier League Logo">
+        </div>
+    </footer>
+    <script>
+        const teamFixtures = {
+        "Liverpool": {
+            "image":"photos/Liverpool Logo.png",
+            "matches": [
+                { "opponent": "Manchester City", "date": "2024-08-19", "time": "15:00", "venue": "Anfield","oppimage":"Manchester City Logo.png" },
+                { "opponent": "Manchester United", "date": "2024-08-22", "time": "17:30", "venue": "Old Trafford","oppimage":"Manchester United Logo.png" },
+                { "opponent": "Chelsea", "date": "2024-08-25", "time": "15:00", "venue": "Stamford Bridge","oppimage":"Chelsea Logo.png" },
+                { "opponent": "Tottenham Hotspur", "date": "2024-09-01", "time": "14:00", "venue": "Tottenham Hotspur Stadium","oppimage":"Tottenham Hotspur Logo.png" },
+                { "opponent": "Arsenal", "date": "2024-09-10", "time": "20:00", "venue": "Emirates Stadium","oppimage":"Arsenal Logo.png" },
+                { "opponent": "Everton", "date": "2024-09-17", "time": "12:30", "venue": "Goodison Park","oppimage":"Everton Logo.png" },
+                { "opponent": "Leicester City", "date": "2024-09-24", "time": "15:00", "venue": "King Power Stadium","oppimage":"Leicester City Logo.png" },
+                { "opponent": "West Ham United", "date": "2023-10-01", "time": "16:00", "venue": "London Stadium","oppimage":"West Ham United Logo.png" },
+                { "opponent": "Crystal Palace", "date": "2024-10-15", "time": "15:00", "venue": "Selhurst Park","oppimage":"Crystal Palace Logo.png" },
+                { "opponent": "Southampton", "date": "2024-10-22", "time": "14:00", "venue": "St Mary's Stadium","oppimage":"Brentford Logo.png" },
+                { "opponent": "Aston Villa", "date": "2024-10-29", "time": "17:30", "venue": "Villa Park","oppimage":"Aston Villa Logo.png" },
+                { "opponent": "Newcastle United", "date": "2024-11-05", "time": "15:00", "venue": "St James' Park","oppimage":"Newcastle United Logo.png" },
+                { "opponent": "Brighton & Hove Albion", "date": "2024-11-19", "time": "14:00", "venue": "Amex Stadium","oppimage":"Brighton & Hove Albion Logo.png " },
+                { "opponent": "Burnley", "date": "2024-11-26", "time": "15:00", "venue": "Turf Moor","oppimage":"Burnley Logo.png" },
+                { "opponent": "Watford", "date": "2024-12-03", "time": "12:00", "venue": "Vicarage Road","oppimage":"Leeds United Logo.png" },
+                { "opponent": "Wolverhampton Wanderers", "date": "2024-12-10", "time": "16:00", "venue": "Molineux Stadium","oppimage":"Wolverhampton Wanderers Logo.png " },
+                { "opponent": "Norwich City", "date": "2024-12-17", "time": "15:00", "venue": "Carrow Road","oppimage":"Bournemouth F.C Logo.png " }
+            ]
+        },
+        "Manchester City": {
+            "image":"photos/Manchester City Logo.png",  
+        "matches": [
+                { "opponent": "Liverpool", "date": "2023-08-19", "time": "15:00", "venue": "Anfield","oppimage":"Liverpool Logo.png" },
+                { "opponent": "Manchester United", "date": "2024-08-22", "time": "17:30", "venue": "Old Trafford","oppimage":"Manchester United Logo.png" },
+                { "opponent": "Chelsea", "date": "2024-08-25", "time": "15:00", "venue": "Stamford Bridge","oppimage":"Chelsea Logo.png" },
+                { "opponent": "Tottenham Hotspur", "date": "2024-09-01", "time": "14:00", "venue": "Tottenham Hotspur Stadium","oppimage":"Tottenham Hotspur Logo.png" },
+                { "opponent": "Arsenal", "date": "2024-09-10", "time": "20:00", "venue": "Emirates Stadium","oppimage":"Arsenal Logo.png" },
+                { "opponent": "Everton", "date": "2024-09-17", "time": "12:30", "venue": "Goodison Park","oppimage":"Everton Logo.png" },
+                { "opponent": "Leicester City", "date": "2024-09-24", "time": "15:00", "venue": "King Power Stadium","oppimage":"Leicester City Logo.png" },
+                { "opponent": "West Ham United", "date": "2023-10-01", "time": "16:00", "venue": "London Stadium","oppimage":"West Ham United Logo.png" },
+                { "opponent": "Crystal Palace", "date": "2024-10-15", "time": "15:00", "venue": "Selhurst Park","oppimage":"Crystal Palace Logo.png" },
+                { "opponent": "Southampton", "date": "2024-10-22", "time": "14:00", "venue": "St Mary's Stadium","oppimage":"Brentford Logo.png" },
+                { "opponent": "Aston Villa", "date": "2024-10-29", "time": "17:30", "venue": "Villa Park","oppimage":"Aston Villa Logo.png" },
+                { "opponent": "Newcastle United", "date": "2024-11-05", "time": "15:00", "venue": "St James' Park","oppimage":"Newcastle United Logo.png" },
+                { "opponent": "Brighton & Hove Albion", "date": "2024-11-19", "time": "14:00", "venue": "Amex Stadium","oppimage":"Brighton & Hove Albion Logo.png " },
+                { "opponent": "Burnley", "date": "2024-11-26", "time": "15:00", "venue": "Turf Moor","oppimage":"Burnley Logo.png" },
+                { "opponent": "Watford", "date": "2024-12-03", "time": "12:00", "venue": "Vicarage Road","oppimage":"Leeds United Logo.png" },
+                { "opponent": "Wolverhampton Wanderers", "date": "2024-12-10", "time": "16:00", "venue": "Molineux Stadium","oppimage":"Wolverhampton Wanderers Logo.png " },
+                { "opponent": "Norwich City", "date": "2024-12-17", "time": "15:00", "venue": "Carrow Road","oppimage":"Bournemouth F.C Logo.png " }
+            ]
+        }
+    };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all team names in the table
+            const teamNames = document.querySelectorAll('.team-name');
+        
+            // Add click event listener to each team name
+            teamNames.forEach(function(teamName) {
+                teamName.addEventListener('click', function() {
+                    // Get the team name
+                    const team = this.textContent;
+        
+                    // Fetch fixtures for the clicked team
+                    // This is a placeholder function. Replace it with your actual data fetching logic.
+                    getFixtures(team).then(function(fixtures) {
+                        // Update the fixtures div with the fetched data
+                        document.getElementById('fixtures').innerHTML = fixtures;
+                    });
+                });
+            });
+        });
+        
+        function getFixtures(team) {
+        if (teamFixtures.hasOwnProperty(team)) {
+            let fixturesHtml = `Fixtures for <strong>${team}</strong>: <br>`;
+            // Check if the team has an image and include it in the HTML
+            if (teamFixtures[team].hasOwnProperty('image')) {
+                fixturesHtml += `<img src="photos/${teamFixtures[team].image}" alt="${team} logo" style="width: 70px; height: auto;"> <br>`;
+            }
+            teamFixtures[team].matches.forEach(match => {
+                // Check if the match has an opponent image and include it in the HTML
+                let oppImageHtml = '';
+                if (match.hasOwnProperty('oppimage')) {
+                    oppImageHtml = `<img src="photos/${match.oppimage}" alt="${match.opponent} logo" style="width: 30px; height: auto;"> `;
+                }
+                fixturesHtml += `- <strong>${match.date}</strong> ${match.time} at <strong>${match.venue}</strong> vs ${oppImageHtml}<strong>${match.opponent}</strong> <br><br>`;
+            });
+            return Promise.resolve(fixturesHtml);
+        } else {
+            return Promise.resolve("<strong>No fixtures available for this team.<strong>");
+        }
+    }
+
+        </script>
+</body>
+</html>
