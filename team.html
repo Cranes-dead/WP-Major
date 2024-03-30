@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div id="playing11" ng-repeat="(teamName, team) in teamCtrl.teams track by teamName" ng-show="teamCtrl.selectedTeam === teamName">
+    <div id="playing11-{{teamName}}" ng-repeat="(teamName, team) in teamCtrl.teams track by teamName" ng-show="teamCtrl.selectedTeam === teamName">
         <div class="team-details">
             <h2>Playing 11 for {{teamName}}</h2>
             <div class="player-grid">
@@ -40,8 +40,14 @@
     <script>
         var app = angular.module('teamApp', []);
 
-        app.controller('TeamController', function($scope, $anchorScroll, $timeout) {
+        app.controller('TeamController', function($scope, $anchorScroll, $timeout, $location) {
             var teamCtrl = this;
+            teamCtrl.selectedTeam = null;
+            teamCtrl.showPlayers = function(teamName) {
+                teamCtrl.selectedTeam = teamName;
+                $location.hash('playing11-' + teamName);
+                $anchorScroll();
+            };
             teamCtrl.teams = {
                  "Manchester City": {
                     logo: 'photos/Manchester City Logo.png',
@@ -223,15 +229,6 @@
                     ]
                 }
             };
-            teamCtrl.selectedTeam = null;
-            teamCtrl.showPlayers = function(teamName) {
-                teamCtrl.selectedTeam = teamName;
-                $timeout(function() {
-                    $anchorScroll('playing11');
-                    $scope.$apply(); 
-                });
-            };
-
         });
     </script>
 </body>
